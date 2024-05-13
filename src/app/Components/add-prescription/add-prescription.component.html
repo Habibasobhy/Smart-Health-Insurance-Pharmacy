@@ -1,0 +1,59 @@
+<section>
+  <div class="container my-4">
+
+    <!-- Slider -->
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide><img src="assets/imgs/Slider/05.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/01.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/02.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/03.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/06.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/09.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/07.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/08.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/04.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/10.jpg" alt="sliderImage"></ng-template>
+        <ng-template carouselSlide><img src="assets/imgs/Slider/11.jpg" alt="sliderImage"></ng-template>
+      </owl-carousel-o>
+
+    <h1 class="secondaryColor text-center p-3">Select Medicines You Want To Add To Prescription</h1>
+
+    <div class="Selection p-3 rounded-3 shadow-lg">
+
+      <div class="alert alert-danger"
+        *ngIf="addModifyPrescription.get('items')?.errors && (addModifyPrescription.get('items')?.touched || isNotValidForm)">
+        <p class="mb-0" *ngIf="addModifyPrescription.get('items')?.getError('required')">Please Choose at least one
+          choice</p>
+      </div>
+
+      <!-- ^ Real Time Search ^ -->
+      <input type="text" placeholder="Medicine Name" class="form-control text-black mx-auto rounded-2 mt-0 p-3"
+        [(ngModel)]="searchKey">
+
+      <form [formGroup]="addModifyPrescription" (ngSubmit)="AddModifyPrescription(addModifyPrescription)">
+
+        <mat-selection-list #shoes formControlName="items">
+          <mat-list-option *ngFor="let medicine of Medicines | searchMedicine : searchKey" [value]="medicine.id">
+            {{medicine.name}}
+          </mat-list-option>
+        </mat-selection-list>
+
+        <div class="d-flex justify-content-between align-items-center">
+
+          <p class="h5 mb-0">
+            <span class="secondaryColor fw-bolder">Options selected : </span>
+            <span class="Counter fw-bolder">{{shoes.selectedOptions.selected.length}}</span>
+          </p>
+
+          <button type="submit" class="btn text-white p-2">
+            <i class="fa-solid fa-plus me-1"></i>Add
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>

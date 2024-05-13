@@ -1,0 +1,80 @@
+<section>
+  <div class="container w-75 mx-auto">
+    <div class="medical-image mx-auto my-0">
+
+      <svg class="text-auto m-0 w-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358 227" fill="none">
+        <g filter="url(#filter0_d_2800_22410)">
+          <path d="M214.772 144.5C214.772 163.554 199.326 179 180.272 179C161.219 179 145.772 163.554 145.772 144.5C145.772 125.446 161.219 110 180.272 110C199.326 110 214.772 125.446 214.772 144.5ZM149.045 144.5C149.045 161.747 163.026 175.728 180.272 175.728C197.519 175.728 211.5 161.747 211.5 144.5C211.5 127.253 197.519 113.272 180.272 113.272C163.026 113.272 149.045 127.253 149.045 144.5Z" fill="#5EC2FC"/>
+          <path d="M198.772 148.5C198.772 184.122 190.714 213 180.772 213C170.831 213 162.772 184.122 162.772 148.5C162.772 112.878 170.831 84 180.772 84C190.714 84 198.772 112.878 198.772 148.5ZM164.48 148.5C164.48 180.744 171.774 206.883 180.772 206.883C189.771 206.883 197.065 180.744 197.065 148.5C197.065 116.256 189.771 90.1174 180.772 90.1174C171.774 90.1174 164.48 116.256 164.48 148.5Z" fill="#5EC2FC"/>
+          <path d="M189.699 123.386C224.505 143.482 247.818 168.265 241.769 178.742C235.721 189.218 202.601 181.42 167.795 161.325C132.989 141.229 109.676 116.446 115.724 105.969C121.773 95.493 154.892 103.291 189.699 123.386ZM168.834 159.525C200.339 177.715 230.317 184.773 235.792 175.291C241.267 165.808 220.165 143.375 188.66 125.185C157.155 106.996 127.176 99.9376 121.702 109.42C116.227 118.903 137.328 141.336 168.834 159.525Z" fill="#5EC2FC"/>
+          <path d="M189.986 158.104C155.058 177.988 121.892 185.584 115.907 175.071C109.922 164.558 133.385 139.917 168.313 120.034C203.241 100.15 236.407 92.5537 242.392 103.067C248.377 113.579 224.914 138.221 189.986 158.104ZM169.341 121.839C137.726 139.837 116.488 162.141 121.905 171.657C127.322 181.173 157.343 174.297 188.958 156.299C220.573 138.301 241.811 115.997 236.394 106.481C230.977 96.9653 200.956 103.841 169.341 121.839Z" fill="#5EC2FC"/>
+        </g>
+        <defs>
+          <filter id="filter0_d_2800_22410" x="-9.22754" y="-30" width="376.456" height="357" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="57"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.34 0 0 0 0 1 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2800_22410"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2800_22410" result="shape"/>
+          </filter>
+        </defs>
+      </svg>
+
+    </div>
+
+    <h1 class="mb-5 main-color text-center fw-bolder">Login <br> Now</h1>
+
+    <div class="alert alert-danger" *ngIf="apiErrorMessage">
+      {{apiErrorMessage}}
+    </div>
+
+    <form [formGroup]="loginPatient" (ngSubmit)="login(loginPatient)">
+
+      <div class="form-floating mb-4 position-relative">
+        <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email</label>
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="loginPatient.get('email')?.errors && (loginPatient.get('email')?.touched || isNotValidForm)">
+        <p class="mb-0" *ngIf="loginPatient.get('email')?.getError('required')">Email is required</p>
+        <p class="mb-0" *ngIf="loginPatient.get('email')?.getError('email')">Email is invalid , name@example.com</p>
+      </div>
+
+      <div class="form-floating mb-2 position-relative">
+        <input [type] = "hidePassword ? 'password' : 'text'" formControlName = "password" class="form-control"
+          id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+        <span (click)="togglePasswordVisibility()" class="cursor-pointer">
+          <i class="fa-solid fa-eye" *ngIf="!hidePassword"></i>
+          <i class="fa-solid fa-eye-slash" *ngIf="hidePassword"></i>
+        </span>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="loginPatient.get('password')?.errors && (loginPatient.get('password')?.touched || isNotValidForm)">
+        <p class="mb-0" *ngIf="loginPatient.get('password')?.getError('required')">Password is required</p>
+        <p class="mb-0" *ngIf="loginPatient.get('password')?.getError('pattern')">
+          Password is invalid , Minimum eight characters, at least one letter and one number</p>
+      </div>
+
+      <a class="ms-1" routerLink = "/forgotPasswordPatient">Forgot Password?</a>
+
+      <button type="submit" class="btn button mt-3 px-5 fs-5 text-white mx-auto d-block">
+        Login
+      </button>
+
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+
+
+

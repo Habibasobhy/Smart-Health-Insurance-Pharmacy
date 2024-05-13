@@ -1,0 +1,25 @@
+.Selection{
+    background-color: #f8f7f4f4;
+}
+
+.Counter{
+    color : #FF4081;
+}
+
+button {
+    background-color : #FF4786;
+    transition: 0.3s all;
+}
+
+button:hover{
+    background-color : #ff2672;
+}
+
+input {
+    border: 3px solid #0D6EFD;
+}
+
+img {
+  width: 50px;
+  height: 250px;
+}

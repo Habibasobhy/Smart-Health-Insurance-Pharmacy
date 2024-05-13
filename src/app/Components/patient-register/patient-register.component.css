@@ -1,0 +1,64 @@
+.button {
+  background-color: var(--secondary-color);
+  transition: 0.3s all;
+  padding-inline: 48px;
+}
+
+.button:hover {
+  background-color: #055ad9;
+}
+
+h1 {
+  text-shadow: 0px 0px 114px rgba(0, 87, 255, 0.25);
+  font-size: 34px;
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  letter-spacing: 10px;
+}
+
+input {
+  background-color: #ECECEC !important;
+}
+
+i {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 2;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+::ng-deep .mdc-line-ripple::before,
+.mdc-line-ripple::after {
+  border-bottom: none !important;
+  content: none !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: #ECECEC !important;
+  border-radius: 0.375rem !important;
+}
+
+::ng-deep mat-label {
+  color: black;
+}
+
+label::after {
+  background-color: transparent !important;
+}
+
+@media screen and (min-width : 521px) {
+  h1 br {
+    display: none;
+  }
+}
+
+@media screen and (max-width : 510px) {
+  .button {
+    padding-inline: 25px;
+  }
+}

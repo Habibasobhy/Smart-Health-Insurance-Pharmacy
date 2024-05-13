@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg bg-primary px-3">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fs-4 fw-bolder d-flex align-items-center" routerLink="">
+        <img src="./assets/imgs/pastel-color-medicine-pills-pink-and-blue-pills-flying-down-out-of-tablet-capsule-3d-rendering-pharmacy-concept-drugs-awareness-png.webp" width="60" alt="">
+        <span>Smart Health</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul *ngIf="isLoggedIn" class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center align-items-center">
+
+          <li class="nav-item ">
+            <a class="nav-link text-white loginLink" routerLink="/doctorHome" routerLinkActive="activeLink">Home</a>
+          </li>
+  
+          <li class="nav-item ">
+            <a class="nav-link text-white loginLink" routerLink="/patientRegister" routerLinkActive="activeLink">RegisterNewPatient</a>
+          </li>
+         
+          <li class="nav-item ">
+            <a class="nav-link text-white loginLink" routerLink="/medicines" routerLinkActive="activeLink">Medicines</a>
+          </li>
+  
+        </ul>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-center align-items-center">
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.facebook.com/" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.instagram.com/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://twitter.com/" target="_blank">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.linkedin.com/" target="_blank">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.youtube.com/" target="_blank">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </li>
+  
+          <li *ngIf="!isLoggedIn" class="nav-item">
+            <a class="nav-link text-white loginLink" routerLink="/loginDoctor" routerLinkActive="activeLink">Login</a>
+          </li>
+
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link text-white loginLink" routerLink="/ChangePasswordDoctor" routerLinkActive="activeLink">ChangePassword</a>
+          </li>
+
+          <li *ngIf="isLoggedIn" class="nav-item cursor-pointer">
+            <a class="nav-link text-white loginLink" (click)="logOut()">LogOut</a>
+          </li>
+  
+        </ul>
+  
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,51 @@
+input {
+  border: 3px solid #0D6EFD
+}
+
+h3 {
+  color: var(--secondary-color);
+}
+
+img {
+  height: 200px;
+  width: 100%;
+}
+
+.medicine {
+  border: 4px solid transparent;
+  overflow: hidden;
+  padding-block: 16px;
+  padding-inline: 12px;
+  transition: 0.3s all;
+}
+
+.medicine:hover {
+  border: 4px solid #0D6EFD;
+  transform: scale(1.05);
+}
+
+.ModifyPrescriptionBtn{
+  transition: 0.4s all;
+  font-size: 20px;
+  width: 25%;
+}
+
+
+@media screen and (max-width : 992px) {
+  .ModifyPrescriptionBtn{
+      font-size: 16px;
+      width: 50%;
+  }
+}
+
+@media screen and (min-width : 768px) and (max-width : 992px) {
+  button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width : 430px) {
+  .buttons{
+    gap: 8px;
+  }
+}

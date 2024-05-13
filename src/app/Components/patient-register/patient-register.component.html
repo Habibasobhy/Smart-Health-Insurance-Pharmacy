@@ -1,0 +1,244 @@
+<section class="py-3">
+
+  <div class="container w-75 mx-auto mt-3">
+
+    <h1 class="mb-4 main-color text-center fw-bolder">Register <br> Now</h1>
+
+    <div class="alert alert-danger" *ngIf="apiErrorMessage">
+      Email Is Already Exists !
+    </div>
+
+    <form [formGroup]="registerPatient" (ngSubmit)="Register(registerPatient)">
+
+      <div class="row">
+
+        <!-- First Name -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-3">
+            <input type="text" formControlName="first_name" class="form-control" id="floatingInput" placeholder="First Name">
+            <label for="floatingInput">First Name</label>
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('first_name')?.errors && (registerPatient.get('first_name')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('first_name')?.getError('required')">First Name is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('first_name')?.getError('minlength')">First Name  MinLength is 3</p>
+            <p class="mb-0" *ngIf="registerPatient.get('first_name')?.getError('maxlength')">First Name  MaxLength is 15</p>
+          </div>
+
+        </div>
+
+
+        <!-- Last Name -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-3">
+            <input type="text" formControlName="last_name" class="form-control" id="floatingInput" placeholder="Last Name">
+            <label for="floatingInput">Last Name</label>
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('last_name')?.errors && (registerPatient.get('last_name')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('last_name')?.getError('required')">Last Name is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('last_name')?.getError('minlength')">Last Name  MinLength is 3</p>
+            <p class="mb-0" *ngIf="registerPatient.get('last_name')?.getError('maxlength')">Last Name  MaxLength is 15</p>
+          </div>
+
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-3">
+            <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('email')?.errors && (registerPatient.get('email')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('email')?.getError('required')">Email is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('email')?.getError('email')">Email is invalid , name@example.com</p>
+          </div>
+
+        </div>
+
+
+        <!-- Password -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-2 position-relative">
+            <input [type] = "hidePassword ? 'password' : 'text'" formControlName = "password" class="form-control"
+              id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+            <span (click)="togglePasswordVisibility()" class="cursor-pointer">
+              <i class="fa-solid fa-eye" *ngIf="!hidePassword"></i>
+              <i class="fa-solid fa-eye-slash" *ngIf="hidePassword"></i>
+            </span>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('password')?.errors && (registerPatient.get('password')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('password')?.getError('required')">Password is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('password')?.getError('pattern')">
+              Password is invalid , Minimum eight characters, at least one letter and one number</p>
+          </div>
+
+        </div>
+
+        <!-- Gender -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-0">
+
+            <mat-form-field class="w-100">
+              <mat-label>Choose Gender</mat-label>
+              <mat-select formControlName="gender">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('gender')?.errors && (registerPatient.get('gender')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('gender')?.getError('required')">gender is required</p>
+          </div>
+
+        </div>
+
+
+
+        <!-- Job -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4">
+            <input type="text" formControlName="job" class="form-control" id="floatingInput" placeholder="Job">
+            <label for="floatingInput">Job</label>
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('job')?.errors && (registerPatient.get('job')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('job')?.getError('required')">Job is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('job')?.getError('minlength')">Job  MinLength is 3</p>
+            <p class="mb-0" *ngIf="registerPatient.get('job')?.getError('maxlength')">Job  MaxLength is 15</p>
+          </div>
+
+        </div>
+
+
+        <!-- National Id -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4">
+            <input type="tel" formControlName="national_id" class="form-control" id="floatingInput" placeholder="National Id" maxlength="14">
+            <label for="floatingInput">National Id</label>
+            <i class="fa-solid fa-address-card"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('national_id')?.errors && (registerPatient.get('national_id')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('national_id')?.getError('required')">National Id is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('national_id')?.getError('pattern')">National Id is invalid , Please Enter 14 Number</p>
+          </div>
+
+        </div>
+
+
+        <!-- Phone -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4">
+            <input type="tel" formControlName="phone" class="form-control" id="floatingInput" placeholder="Phone" maxlength="11">
+            <label for="floatingInput">Phone</label>
+            <i class="fa-solid fa-phone-flip"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('phone')?.errors && (registerPatient.get('phone')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('phone')?.getError('required')">Phone Is Required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('phone')?.getError('pattern')">Phone Is InValid</p>
+          </div>
+
+        </div>
+
+
+        <!-- City -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4" formGroupName="address">
+            <input type="text" formControlName="city" class="form-control" id="floatingInput" placeholder="City">
+            <label for="floatingInput">City</label>
+            <i class="fa-solid fa-city"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('address.city')?.errors && (registerPatient.get('address.city')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('address.city')?.getError('required')">City is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.city')?.getError('minlength')">City MinLength is 3</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.city')?.getError('maxlength')">City MaxLength is 15</p>
+          </div>
+
+        </div>
+
+
+        <!-- Street -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4" formGroupName="address">
+            <input type="text" formControlName="street" class="form-control" id="floatingInput" placeholder="Street">
+            <label for="floatingInput">Street</label>
+            <i class="fa-solid fa-road"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('address.street')?.errors && (registerPatient.get('address.street')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('address.street')?.getError('required')">Street is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.street')?.getError('minlength')">Street MinLength is 3</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.street')?.getError('maxlength')">Street MaxLength is 50</p>
+          </div>
+
+        </div>
+
+
+        <!-- Building -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4" formGroupName="address">
+            <input type="text" formControlName="buliding" class="form-control" id="floatingInput" placeholder="Building">
+            <label for="floatingInput">Building</label>
+            <i class="fa-solid fa-building"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('address.buliding')?.errors && (registerPatient.get('address.buliding')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('address.buliding')?.getError('required')">Building is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.buliding')?.getError('maxlength')">Building MaxLength is 50</p>
+          </div>
+
+        </div>
+
+
+        <!-- Apartment -->
+        <div class="col-md-6">
+
+          <div class="form-floating mb-4" formGroupName="address">
+            <input type="text" formControlName="apartment" class="form-control" id="floatingInput" placeholder="Apartment">
+            <label for="floatingInput">Apartment</label>
+            <i class="fa-solid fa-house-chimney-window"></i>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="registerPatient.get('address.apartment')?.errors && (registerPatient.get('address.apartment')?.touched || isNotValidForm)">
+            <p class="mb-0" *ngIf="registerPatient.get('address.apartment')?.getError('required')">Apartment is required</p>
+            <p class="mb-0" *ngIf="registerPatient.get('address.apartment')?.getError('maxlength')">Apartment MaxLength is 15</p>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <button type="submit" class="btn button fs-5 text-white mb-2 d-block mx-auto">
+        Register
+      </button>
+
+    </form>
+
+  </div>
+
+</section>

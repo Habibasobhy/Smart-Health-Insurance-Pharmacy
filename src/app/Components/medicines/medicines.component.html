@@ -1,0 +1,60 @@
+<div class="section py-5">
+
+    <div class="container">
+      <div class="row gy-5 mx-1">
+
+        <h1 class="mt-4 mb-0 ps-0">Search...</h1>
+
+        <!-- ^ Real Time Search ^ -->
+        <input type="text" placeholder="search here" class="form-control text-black mx-auto rounded-2 mb-4 mt-0 p-3"
+          [(ngModel)]="searchKey">
+
+
+          <button [routerLink]="['/AddMedicine']"
+            class="btn bg-main text-white p-2 mt-0 mb-5 ms-auto addMedicineBtn">
+            <i class="fa-solid fa-plus me-2"></i>Add Medicine
+          </button>
+
+
+        <h2  *ngIf="Medicines.length > 0" class="text-center mb-2 mt-0 fw-bolder">All Medicines</h2>
+
+        <!-- If No Medicine In Database -->
+        <h3 *ngIf="Medicines?.length == 0" class="text-center text-danger fw-bolder fs-1">No Medicines Here 😊</h3>
+
+        <div class="col-md-4 mt-4"
+          *ngFor="let medicine of Medicines || [] | searchMedicine : searchKey">
+
+          <div class="medicine cursor-pointer shadow-lg rounded-4">
+
+            <div class="image-cover d-flex justify-content-center align-content-center pt-1">
+              <img src="https://medical-system-yuw6.onrender.com/{{medicine.image_cover}}" alt="Medicine"
+                            class="img-fluid text-center rounded-4">
+            </div>
+
+            <h3 class="text-center py-2 fw-medium">{{medicine.name}}</h3>
+
+            <div class="d-flex justify-content-between buttons">
+              <button [routerLink]="['/DoctorMedicineDetails' , medicine.id]"
+                class="btn bg-success text-white p-2 mb-2 mx-2">
+                <i class="fa-regular fa-eye me-1"></i>Medicine Details
+              </button>
+
+              <button class="btn bg-warning text-white p-2 mb-2 mx-2" [routerLink]="['/UpdateMedicine' , medicine.id]">
+                <i class="fa-solid fa-pen-to-square me-1"></i>Update Medicine
+              </button>
+
+            </div>
+
+            <div class="text-center mt-3">
+              <button class="btn bg-danger text-white p-2 mb-2 mx-2" (click)="DeleteMedicineDB(medicine.id)">
+                <i class="fa-regular fa-trash-can me-1"></i>Remove Medicine
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

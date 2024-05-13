@@ -1,0 +1,49 @@
+<div class="section py-5">
+
+  <div class="container">
+    <div class="row gy-5 mx-1">
+
+      <h1 class="mt-4 mb-0 ps-0">Search...</h1>
+
+      <!-- ^ Real Time Search ^ -->
+      <input type="text" placeholder="search here" class="form-control text-black mx-auto rounded-2 mt-0 mb-5 p-3"
+        [(ngModel)]="searchKey">
+
+      <h2 *ngIf="allPatients.length > 0" class="text-center mb-3 mt-0 fw-bolder">All Patients</h2>
+
+      <div class="col-md-4" *ngFor="let patient of allPatients | search : searchKey">
+
+        <div class="patient cursor-pointer shadow-lg rounded-4">
+
+          <div class="image-cover d-flex justify-content-center align-content-center pt-1">
+            <img src="assets/imgs/images.png" alt="Patient" class="img-fluid text-center rounded-4">
+          </div>
+
+          <h3 class="text-center py-3 fw-medium">{{patient.first_name}}
+            {{patient.last_name}}</h3>
+
+          <div class="d-flex justify-content-between buttons">
+
+            <button [routerLink]="['/AddPrescription' , patient.id]" class="btn bg-warning text-white p-2 me-2">
+              <i class="fa-solid fa-plus me-1"></i>Add Prescription
+            </button>
+
+            <button [routerLink]="['/prescriptionDetails' , patient.id]" class="btn bg-success text-white p-2">
+              <i class="fa-regular fa-eye me-1"></i>Show Prescription
+            </button>
+
+          </div>
+
+          <div class="text-center mt-3">
+            <button class="btn bg-danger text-white p-2" (click)="deletePatient(patient.id)">
+              <i class="fa-regular fa-trash-can me-1"></i>Remove Patient
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,58 @@
+<section>
+
+    <div class="container w-75 mx-auto">
+      <div class="medical-image mx-auto mb-4 mt-4">
+        <img src="assets/imgs/medicine-online-doctor-consults-in-laptop-online-covid-19-pandemic-free-vector.jpg" class="w-100" alt="login image">
+      </div>
+  
+      <h1 class="mb-4 main-color text-center">Login <br> Now</h1>
+  
+      <div class="alert alert-danger" *ngIf="apiErrorMessage">
+        {{apiErrorMessage}}
+      </div>
+  
+      <form [formGroup]="loginDoctor" (ngSubmit)="login(loginDoctor)">
+  
+        <!-- Email -->
+        <div class="form-floating mb-4 position-relative">
+          <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email</label>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+  
+        <div class="alert alert-danger"
+          *ngIf="loginDoctor.get('email')?.errors && (loginDoctor.get('email')?.touched || isNotValidForm)">
+          <p class="mb-0" *ngIf="loginDoctor.get('email')?.getError('required')">Email is required</p>
+          <p class="mb-0" *ngIf="loginDoctor.get('email')?.getError('email')">Email is invalid , name@example.com</p>
+        </div>
+        
+        <!-- Password -->
+        <div class="form-floating mb-2 position-relative">
+          <input [type] = "hidePassword ? 'password' : 'text'" formControlName = "password" class="form-control"
+            id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+          <span (click)="togglePasswordVisibility()" class="cursor-pointer">
+            <i class="fa-solid fa-eye" *ngIf="!hidePassword"></i>
+            <i class="fa-solid fa-eye-slash" *ngIf="hidePassword"></i>
+          </span>
+        </div>
+        
+        <div class="alert alert-danger"
+          *ngIf="loginDoctor.get('password')?.errors && (loginDoctor.get('password')?.touched || isNotValidForm)">
+          <p class="mb-0" *ngIf="loginDoctor.get('password')?.getError('required')">Password Is Required</p>
+          <p class="mb-0" *ngIf="loginDoctor.get('password')?.getError('pattern')">
+            Password Is Invalid , Minimum eight characters, at least one letter and one number</p>
+        </div>
+        
+        <a class="ms-1" routerLink = "/forgotPasswordDoctor">Forgot Password?</a>
+  
+        <button type="submit" class="btn button mt-3 px-5 fs-5 text-white mx-auto d-block">
+          Login
+        </button>
+  
+      </form>
+  
+    </div>
+  
+  </section>
+  

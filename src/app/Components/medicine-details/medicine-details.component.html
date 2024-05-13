@@ -1,0 +1,39 @@
+<div class="section d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="row align-items-center" *ngIf="medicineDetails.name">
+
+      <div class="col-md-4">
+        <div class="image-cover d-flex justify-content-center align-content-center pt-3">
+          <img src="https://medical-system-yuw6.onrender.com/{{medicineDetails.image_cover}}" alt="Medicine"
+            class="text-center rounded-4">
+
+        </div>
+      </div>
+
+      <div class="col-md-8 pe-3">
+        <h2 class="secondaryColor">
+          {{medicineDetails.name}}
+        </h2>
+        <h6 class="text-muted fw-bolder">{{medicineDetails.description}}</h6>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h5><span class="fw-bolder text-danger">Dose : </span>{{medicineDetails.treatment_dose}}</h5>
+          <p class="fw-semibold"><span class=" fw-bold text-danger">Quantity : </span>{{medicineDetails.quantity}}</p>
+        </div>
+
+
+        <div class="age d-flex justify-content-between align-items-center">
+          <p class="fw-semibold"><span class="text-warning fw-bolder">Min Age : </span>{{medicineDetails.min_age}}</p>
+          <p class="fw-semibold"><span class="text-warning fw-bolder">Max Age : </span>{{medicineDetails.max_age}}</p>
+        </div>
+
+        <div class="position d-flex justify-content-between align-items-center">
+          <p class="fw-semibold"><span class="fw-bold">Row : </span>{{medicineDetails.row}}</p>
+          <p class="fw-semibold"><span class="fw-bold">Column : </span>{{medicineDetails.column}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+<section class="section h-75 d-flex justify-content-center align-items-center">
+
+  <div *ngIf="!QRCodeSrc" class="h-100 d-flex justify-content-center align-items-center">
+    <h1 class="text-danger fw-bolder mt-4">You Don't Have QR Code 😊</h1>
+  </div>
+
+  <div class="container w-75 shadow-lg rounded-3 pt-4 px-5 pb-5 text-center" *ngIf="QRCodeSrc">
+    <h1 class="fw-bold text-center mb-4">Scan It To Take Prescription</h1>
+    <div class="row justify-content-around">
+      <div class="col-5 d-flex justify-content-center align-items-center">
+        <img src="assets/imgs/QrCode.png" class="rounded-3 ScanningImage" alt="rivet-image">
+      </div>
+      <div class="col-7 text-end">
+        <img src="{{QRCodeSrc}}" class="rounded-3 QrCodeSrc" alt="QRCode">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,85 @@
+:root {
+  --font-secondary: 'Prata', serif;
+}
+
+section{
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: var(--secondary-color);
+  transition: 0.3s all;
+}
+
+.button:hover {
+  background-color: #055ad9;
+}
+
+
+h1 {
+  text-shadow: 0px 0px 114px rgba(0, 87, 255, 0.25);
+  font-size: 34px;
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  letter-spacing: 10px;
+}
+
+.medical-image {
+  width: 20%;
+}
+
+input {
+  background-color: #EFF0F6;
+}
+
+i {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 2;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (min-width : 521px) {
+  h1 br {
+    display: none;
+  }
+}
+
+@media screen and (max-width : 576px) {
+  .medical-image {
+    width: 40%;
+    margin-block: 20px !important;
+  }
+}
+
+@media screen and (min-width : 577px) and (max-width : 770px) {
+  .medical-image {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width : 771px) and (max-width : 992px) {
+  .medical-image {
+    width: 40%;
+  }
+}
+
+
+@media screen and (min-width : 577px) and (max-width : 1400px) {
+  button {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width : 580px) {
+  a {
+    font-size: 14px;
+  }
+}

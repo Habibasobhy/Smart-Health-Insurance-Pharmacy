@@ -1,0 +1,36 @@
+.container {
+  background: linear-gradient(to bottom, #76B6E9, #e7eef4);
+  margin-top: 65px;
+}
+
+.ScanningImage {
+  width: 100%;
+}
+
+.QrCodeSrc {
+  width: 77%
+}
+
+@media screen and (max-width : 576px) {
+
+  .QrCodeSrc {
+    width: 82%
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (min-width : 768px) {
+
+  .ScanningImage {
+    width: 70%;
+  }
+
+  .QrCodeSrc {
+    width: 50%
+  }
+
+}

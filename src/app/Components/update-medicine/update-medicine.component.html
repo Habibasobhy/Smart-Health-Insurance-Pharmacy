@@ -1,0 +1,188 @@
+<section>
+    <div class="container w-75 mx-auto">
+
+        <h1 class="mb-4 main-color text-center fw-bolder">Update <br> Medicine</h1>
+
+        <form [formGroup]="updateMedicine" (ngSubmit)="updateMedicineDB()">
+
+            <div class="row">
+
+                <!-- ^ Name -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="text" formControlName="name" class="form-control" id="floatingInput"
+                            placeholder="Name">
+                        <label for="floatingInput">Name</label>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('name')?.errors && (updateMedicine.get('name')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('name')?.getError('required')">Name is required</p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('name')?.getError('minlength')">Name MinLength is 3</p>
+                    </div>
+                </div>
+
+                <!-- ^ Description -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="text" formControlName="description" class="form-control" id="floatingInput"
+                            placeholder="Description">
+                        <label for="floatingInput">Description</label>
+                        <i class="fa-solid fa-text-width"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('description')?.errors && (updateMedicine.get('description')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('description')?.getError('required')">Description is
+                            required
+                        </p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('description')?.getError('maxlength')">Description
+                            MaxLength
+                            is
+                            200 Character
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ^ Min_age -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="min_age" class="form-control" id="floatingInput"
+                            placeholder="min_age">
+                        <label for="floatingInput">min_age</label>
+                        <i class="fa-solid fa-user-minus"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('min_age')?.errors && (updateMedicine.get('min_age')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('min_age')?.getError('required')">Minimum age is required
+                        </p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('min_age')?.getError('pattern')">
+                            Minimum age is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Max_age -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="max_age" class="form-control" id="floatingInput"
+                            placeholder="max_age">
+                        <label for="floatingInput">max_age</label>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('max_age')?.errors && (updateMedicine.get('max_age')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('max_age')?.getError('required')">Maximum age is required
+                        </p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('max_age')?.getError('pattern')">
+                            Maximum age is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ row -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-0">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Choose Row</mat-label>
+                            <mat-select value={{medicineDetails.row}} formControlName="row">
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('row')?.errors && (updateMedicine.get('row')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('row')?.getError('required')">Row is required</p>
+                    </div>
+                </div>
+
+                <!-- ^ Column -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-0">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Choose Column</mat-label>
+                            <mat-select formControlName="column" value={{medicineDetails.column}}>
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="3">3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('column')?.errors && (updateMedicine.get('column')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('column')?.getError('required')">Row is required</p>
+                    </div>
+                </div>
+
+                <!-- ^ treatment_dose -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" value={{medicineDetails.treatment_dose}} formControlName="treatment_dose" class="form-control" id="floatingInput"
+                            placeholder="treatment_dose">
+                        <label for="floatingInput">treatment_dose</label>
+                        <i class="fa-solid fa-arrow-down-1-9"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('treatment_dose')?.errors && (updateMedicine.get('treatment_dose')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('treatment_dose')?.getError('required')">Treatment dose
+                            is
+                            required</p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('treatment_dose')?.getError('pattern')">
+                            Treatment dose is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Quantity -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="quantity" class="form-control" id="floatingInput"
+                            placeholder="Quantity">
+                        <label for="floatingInput">Quantity</label>
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('quantity')?.errors && (updateMedicine.get('quantity')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('quantity')?.getError('required')">Quantity is required
+                        </p>
+                        <p class="mb-0" *ngIf="updateMedicine.get('quantity')?.getError('pattern')">
+                            Quantity is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Image Cover -->
+                <div class="col-md-12">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="file" accept="image/*" formControlName="image_cover" class="form-control"
+                            id="floatingInput" placeholder="image_cover" (change)="onFileSelected($event)">
+                        <label for="floatingInput">image_cover</label>
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="updateMedicine.get('image_cover')?.errors && (updateMedicine.get('image_cover')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="updateMedicine.get('image_cover')?.getError('required')">Image cover is
+                            required
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <button type="submit" class="btn button mt-1 px-5 fs-5 text-white mx-auto d-block">
+                Update
+            </button>
+
+        </form>
+    </div>
+</section>

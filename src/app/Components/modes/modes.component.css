@@ -1,0 +1,125 @@
+section {
+  background-color: #00134E;
+  min-height: 100vh;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #FFC090;
+  --color-2: #F7F6DC;
+  --color-3: #B1D7B4;
+}
+
+.title-word-2 {
+  --color-1: #B1D7B4;
+  --color-2: #FFC090;
+  --color-3: #F7F6DC;
+}
+
+.title-word-3 {
+  --color-1: #F7F6DC;
+  --color-2: #B1D7B4;
+  --color-3: #FFC090;
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1)
+  }
+
+  32% {
+    color: var(--color-1)
+  }
+
+  33% {
+    color: var(--color-2)
+  }
+
+  65% {
+    color: var(--color-2)
+  }
+
+  66% {
+    color: var(--color-3)
+  }
+
+  99% {
+    color: var(--color-3)
+  }
+
+  100% {
+    color: var(--color-1)
+  }
+}
+
+/* Here are just some visual styles. 🖌 */
+
+.container {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 8.5vw;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 2.1875rem;
+}
+
+img{
+  width: 100%;
+}
+
+.doctor,
+.patient{
+  width: 75%;
+}
+
+
+/* & Media Query & */
+
+@media screen and (max-width : 576.99px) {
+  p {
+    font-size: 1.1875rem;
+  }
+
+  .title{
+    font-size: 40px;
+  }
+
+  .doctor,
+  .patient {
+    width: 100%;
+  }
+
+  img{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width : 577px) and (max-width : 768px) {
+
+  .doctor,
+  .patient {
+    width: 100%;
+  }
+
+  img{
+    width: 95%;
+  }
+}
+
+@media screen and (min-width : 992px) {
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+

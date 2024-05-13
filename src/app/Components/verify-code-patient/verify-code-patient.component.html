@@ -1,0 +1,31 @@
+<div class="section h-75 d-flex justify-content-center align-items-center ">
+    <div class="container w-75 mt-5 shadow-lg rounded-2 p-5 ">
+
+        <div class="alert alert-danger" *ngIf="apiErrorMessage">
+            {{apiErrorMessage}}
+        </div>
+
+          
+        <h1 class="text-center mt-3">Enter The Verify Code</h1>
+
+        <form [formGroup]="VerifyCodePatient" (ngSubmit)="VerifyCode(VerifyCodePatient)">
+            <div class="form-floating mt-3 position-relative">
+                <input type="tel" formControlName="code" class="form-control" maxlength="6" id="floatingInput" placeholder="Verify Code">
+                <label for="floatingInput">Code</label>
+                <i class="fa-solid fa-hashtag"></i>
+              </div>
+
+              <div class="alert alert-danger mt-1" *ngIf="VerifyCodePatient.get('code')?.errors && (VerifyCodePatient.get('code')?.touched || isNotValidForm)">
+                <p class="mb-0" *ngIf="VerifyCodePatient.get('code')?.getError('required')">Code Is Required</p>
+                <p class="mb-0" *ngIf="VerifyCodePatient.get('code')?.getError('pattern')">Code Is Invalid </p>
+              </div>
+
+
+              <button type="submit" class="btn mt-4 px-5 fs-5 mb-3 text-white mx-auto d-block">
+                Submit
+              </button>
+
+        </form>
+    </div>
+</div>
+

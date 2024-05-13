@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+
+
+:root{
+  --main-color:#5EC2FC;
+  --secondary-color : #0D6EFD;
+  --font-secondary:'Prata', serif;
+}
+
+.main-color{
+  color: var(--main-color);
+}
+
+.bg-main{
+  background-color: #3267ed;
+}
+
+.activeLink{
+  background-color: #fff;
+  color: var(--secondary-color) !important;
+  border-radius: 8px;
+  padding-block: 4px ;
+}
+
+.secondaryColor{
+  color: var(--secondary-color);
+}
+
+.cursor-pointer
+{
+  cursor: pointer;
+}
+
+.myAnchor{
+  text-decoration: inherit;
+  color: inherit;
+  display: block;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

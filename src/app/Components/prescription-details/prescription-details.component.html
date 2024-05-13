@@ -1,0 +1,56 @@
+<div class="section py-5">
+
+  <div class="container">
+    <div class="row gy-5 mx-1">
+
+      <h1 class="mt-4 mb-0 ps-0">Search...</h1>
+
+      <!-- ^ Real Time Search ^ -->
+      <input type="text" placeholder="search here" class="form-control text-black mx-auto rounded-2 mt-0 p-3"
+        [(ngModel)]="searchKey">
+
+
+      <button [routerLink]="['/AddPrescription/',patientId]"
+        class="btn bg-warning text-dark p-2 fw-bolder mb-5 ms-auto ModifyPrescriptionBtn">
+        <i class="fa-solid fa-pen-to-square me-1"></i>Modify Prescription
+      </button>
+
+      <h2 *ngIf="prescriptionOfPatient?.data?.Items"
+        class="text-center mb-2 mt-0 fw-bolder">{{Name}} Prescription</h2>
+
+      <!-- If No Medicine In Prescription -->
+      <h3 *ngIf="prescriptionOfPatient?.data?.Items?.length == 0 || prescriptionOfPatient?.data == null"
+        class="text-center text-danger fw-bolder fs-1">No Medicines Here 😊</h3>
+
+      <div class="col-md-4 mt-4"
+        *ngFor="let prescreption of prescriptionOfPatient?.data?.Items || [] | searchPrescription : searchKey">
+
+        <div class="medicine cursor-pointer shadow-lg rounded-4">
+
+          <div class="image-cover d-flex justify-content-center align-content-center pt-1">
+            <img src="https://medical-system-yuw6.onrender.com/{{prescreption.Medicine.image_cover}}" alt="Medicine"
+              class="text-center rounded-4">
+          </div>
+
+          <h3 class="text-center py-2 fw-medium">{{prescreption.Medicine.name}}</h3>
+
+          <div class="buttons gap-md-2 d-flex justify-content-between mb-3">
+
+            <button [routerLink]="['/DoctorMedicineDetails' , prescreption.Medicine.id]"
+              class="btn bg-success text-white p-2">
+              <i class="fa-regular fa-eye me-1"></i>Medicine Details
+            </button>
+
+            <button class="btn bg-danger text-white p-2" (click)="deleteMedicineForUser(prescreption.id)">
+              <i class="fa-regular fa-trash-can me-1"></i>Remove Medicine
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

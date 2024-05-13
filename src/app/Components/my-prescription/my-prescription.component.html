@@ -1,0 +1,42 @@
+<div class="section py-5">
+
+    <div class="container">
+      <div class="row gy-5 mx-1">
+
+        <h1 class="mt-4 mb-0 ps-0">Search...</h1>
+
+        <!-- ^ Real Time Search ^ -->
+        <input type="text" placeholder="search here" class="form-control text-black mx-auto rounded-2 mt-0 p-3"
+          [(ngModel)]="searchKey">
+
+
+        <h2 *ngIf="prescriptionOfPatient?.data?.Items" class="text-center mb-2 mt-5 fw-bolder">Your Prescription</h2>
+        <h2 *ngIf="!prescriptionOfPatient?.data?.Items" class="text-center fw-bolder text-danger NoPrescription">You Don't Have Prescription 😊</h2>
+
+        <div class="col-md-4 mt-4"
+          *ngFor="let prescreption of prescriptionOfPatient?.data?.Items || [] | searchPrescription : searchKey">
+
+          <div class="medicine cursor-pointer shadow-lg rounded-4">
+
+            <div class="image-cover d-flex justify-content-center align-content-center pt-1">
+              <img src="https://medical-system-yuw6.onrender.com/{{prescreption?.Medicine?.image_cover}}" alt="Medicine"
+              class="text-center rounded-4">
+            </div>
+
+            <h3 class="text-center py-2 fw-medium">{{prescreption?.Medicine?.name}}</h3>
+
+            <div class="text-center">
+                <button [routerLink]="['/PatientMedicineDetails' , prescreption.Medicine.id]"
+                 class="btn button text-white p-2">
+                    <i class="fa-regular fa-eye me-1"></i>Medicine Details
+                </button>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

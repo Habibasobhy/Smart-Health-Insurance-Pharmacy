@@ -1,0 +1,188 @@
+<section>
+    <div class="container w-75 mx-auto">
+
+        <h1 class="mb-4 main-color text-center fw-bolder">Add <br> Medicine</h1>
+
+        <form [formGroup]="NewMedicine" (ngSubmit)="AddMedicineDB()">
+
+            <div class="row">
+
+                <!-- ^ Name -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="text" formControlName="name" class="form-control" id="floatingInput"
+                            placeholder="Name">
+                        <label for="floatingInput">Name</label>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('name')?.errors && (NewMedicine.get('name')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('name')?.getError('required')">Name is required</p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('name')?.getError('minlength')">Name MinLength is 3</p>
+                    </div>
+                </div>
+
+                <!-- ^ Description -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="text" formControlName="description" class="form-control" id="floatingInput"
+                            placeholder="Description">
+                        <label for="floatingInput">Description</label>
+                        <i class="fa-solid fa-text-width"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('description')?.errors && (NewMedicine.get('description')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('description')?.getError('required')">Description is
+                            required
+                        </p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('description')?.getError('maxlength')">Description
+                            MaxLength
+                            is
+                            200 Character
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ^ Min_age -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="min_age" class="form-control" id="floatingInput"
+                            placeholder="min_age">
+                        <label for="floatingInput">min_age</label>
+                        <i class="fa-solid fa-user-minus"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('min_age')?.errors && (NewMedicine.get('min_age')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('min_age')?.getError('required')">Minimum age is required
+                        </p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('min_age')?.getError('pattern')">
+                            Minimum age is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Max_age -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="max_age" class="form-control" id="floatingInput"
+                            placeholder="max_age">
+                        <label for="floatingInput">max_age</label>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('max_age')?.errors && (NewMedicine.get('max_age')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('max_age')?.getError('required')">Maximum age is required
+                        </p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('max_age')?.getError('pattern')">
+                            Maximum age is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ row -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-0">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Choose Row</mat-label>
+                            <mat-select formControlName="row">
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('row')?.errors && (NewMedicine.get('row')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('row')?.getError('required')">Row is required</p>
+                    </div>
+                </div>
+
+                <!-- ^ Column -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-0">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Choose Column</mat-label>
+                            <mat-select formControlName="column">
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="3">3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('column')?.errors && (NewMedicine.get('column')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('column')?.getError('required')">Row is required</p>
+                    </div>
+                </div>
+
+                <!-- ^ treatment_dose -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="treatment_dose" class="form-control" id="floatingInput"
+                            placeholder="treatment_dose">
+                        <label for="floatingInput">treatment_dose</label>
+                        <i class="fa-solid fa-arrow-down-1-9"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('treatment_dose')?.errors && (NewMedicine.get('treatment_dose')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('treatment_dose')?.getError('required')">Treatment dose
+                            is
+                            required</p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('treatment_dose')?.getError('pattern')">
+                            Treatment dose is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Quantity -->
+                <div class="col-md-6">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="tel" formControlName="quantity" class="form-control" id="floatingInput"
+                            placeholder="Quantity">
+                        <label for="floatingInput">Quantity</label>
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('quantity')?.errors && (NewMedicine.get('quantity')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('quantity')?.getError('required')">Quantity is required
+                        </p>
+                        <p class="mb-0" *ngIf="NewMedicine.get('quantity')?.getError('pattern')">
+                            Quantity is Invalid , Must be a number.</p>
+                    </div>
+                </div>
+
+                <!-- ^ Image Cover -->
+                <div class="col-md-12">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="file" accept="image/*" formControlName="image_cover" class="form-control"
+                            id="floatingInput" placeholder="image_cover" (change)="onFileSelected($event)">
+                        <label for="floatingInput">image_cover</label>
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="NewMedicine.get('image_cover')?.errors && (NewMedicine.get('image_cover')?.touched || isNotValidForm)">
+                        <p class="mb-0" *ngIf="NewMedicine.get('image_cover')?.getError('required')">Image cover is
+                            required
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <button type="submit" class="btn button mt-1 px-5 fs-5 text-white mx-auto d-block">
+                Add
+            </button>
+
+        </form>
+    </div>
+</section>
